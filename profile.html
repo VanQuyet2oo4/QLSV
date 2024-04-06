@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+        }
+        .profile-info {
+            margin-bottom: 20px;
+        }
+        .profile-info h2 {
+            color: #333;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        .profile-info input[type="text"],
+        .profile-info input[type="email"],
+        .profile-info input[type="tel"],
+        .profile-info textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+        .profile-info textarea {
+            height: 100px;
+            resize: none;
+        }
+        .profile-info input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .profile-info input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Personal Profile</h1>
+        <div class="profile-info">
+            <h2>Basic Information</h2>
+            <input type="text" id="fullname" name="fullname" placeholder="Full Name">
+            <input type="text" id="dob" name="dob" placeholder="Date of Birth">
+            <input type="text" id="address" name="address" placeholder="Address">
+            <input type="email" id="email" name="email" placeholder="Email">
+            <input type="tel" id="phone" name="phone" placeholder="Phone Number">
+        </div>
+        <div class="profile-info">
+            <input type="submit" id="saveBtn" value="Save">
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("saveBtn").addEventListener("click", function() {
+            window.location.href = "index.html"; // Thay đổi "home.html" thành đường dẫn tới trang "home page" của bạn
+        });
+    </script>
+</body>
+</html>
