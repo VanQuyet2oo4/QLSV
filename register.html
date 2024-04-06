@@ -124,12 +124,12 @@
 				<h4>Already have an Account ?<a href="signin.html">  Sign In »</a> </h4>
 			</div>
 			<div class="login-body">
-				<form class="wow fadeInUp animated" data-wow-delay=".7s">
-					<input type="text" placeholder="First Name" required="">
-					<input type="text" placeholder="Last Name" required="">
-					<input type="text" class="email" placeholder="Email Address" required="">
-					<input type="password" name="password" class="lock" placeholder="Password">
-					<input type="submit" name="Register" value="Register">
+				<form class="wow fadeInUp animated" data-wow-delay=".7s" id="registerForm">
+					<input type="text" placeholder="First Name" id="firstName" required="">
+					<input type="text" placeholder="Last Name" id="lastName" required="">
+					<input type="text" class="email" placeholder="Email Address" id="email" required="">
+					<input type="password" name="password" class="lock" placeholder="Password" id="password">
+					<input type="submit" name="Register" value="Register" onclick="registerUser(event)">
 				</form>
 			</div>
 		</div>
@@ -139,7 +139,7 @@
 			<div class="footer-info">
 				<div class="col-md-4 footer-grids wow fadeInUp animated" data-wow-delay=".5s">
 					<h4 class="footer-logo"><a href="index.html">Baby <b>Time</b></a></h4>
-					<p>2017 © Baby Time. All rights reserved | Design by HELP University</p>
+					
 				</div>
 				<div class="col-md-4 footer-grids wow fadeInUp animated" data-wow-delay=".7s">
 					<h3>Popular</h3>
@@ -163,5 +163,30 @@
 	</div>
 	<script src="js/main.js"></script>
     <script src="js/bootstrap.js"></script>
+
+	<script>
+		function registerUser(event) {
+			event.preventDefault(); // Ngăn chặn hành động mặc định của nút Submit
+
+			// Lấy dữ liệu từ form
+			var firstName = document.getElementById("firstName").value;
+			var lastName = document.getElementById("lastName").value;
+			var email = document.getElementById("email").value;
+			var password = document.getElementById("password").value;
+
+			// Kiểm tra xem tất cả các trường đã được điền đầy đủ hay chưa
+			if (firstName === "" || lastName === "" || email === "" || password === "") {
+				alert("Please fill in all fields");
+				return;
+			}
+
+			// Giả sử ở đây bạn có một hàm để gửi dữ liệu đến máy chủ và xử lý đăng ký, sau đó nhận lại kết quả
+			// Trong trường hợp này, tôi sẽ sử dụng setTimeout để giả định rằng đăng ký thành công sau 1 giây
+			setTimeout(function() {
+				alert("Sign Up Success");
+				window.location.href = "signin.html"; // Chuyển hướng đến trang đăng nhập
+			}, 1000);
+		}
+	</script>
 </body>
 </html>

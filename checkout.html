@@ -5,7 +5,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+<script type="application/x-javascript">addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
 		function hideURLbar(){ window.scrollTo(0,1); } </script>
 
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
@@ -75,7 +75,7 @@
 							<span class="icon-bar"></span>
 						</button>
 					</div>
-					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 						<ul class="nav navbar-nav top-nav-info">
 							<li><a href="index.html" class="active"><b>Home</b></a></li>
 							<li>
@@ -159,7 +159,61 @@
 				   </div>
 				   <div class="clearfix"></div>
 				</div>
-			</div>	
+			</div>
+			
+			<!-- Thêm các trường dữ liệu đầu vào cho thanh toán -->
+			<div class="checkout">
+				<div class="container">
+					<h3 class="wow fadeInUp animated" data-wow-delay=".5s">Checkout</h3>
+					<div class="checkout-right wow fadeInUp animated" data-wow-delay=".7s">
+						<div class="col-md-6 checkout-left">
+							<div class="billing-details">
+								<h4 class="wow fadeInUp animated" data-wow-delay=".5s">Billing Details</h4>
+								<form>
+									<input type="text" placeholder="Name">
+									<input type="text" placeholder="Email">
+									<input type="text" placeholder="Address">
+									<input type="text" placeholder="City">
+									<input type="text" placeholder="Phone">
+									<input type="text" placeholder="Zip">
+								</form>
+							</div>
+						</div>
+						<div class="col-md-6 checkout-right-basket wow fadeInUp animated" data-wow-delay=".7s">
+							<a href="single.html">
+								<span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>Back To Shopping
+							</a>
+							<div class="cart-total">
+								<h4>Total Amount</h4>
+								<p> <span class="simpleCart_total"></span> (<span id="simpleCart_quantity" class="simpleCart_quantity"></span> items)</p>
+								<p>Delivery Charges<span>Free</span></p>
+								<div class="clearfix"></div>	
+							</div>	
+							<ul class="list-unstyled">
+								<li>
+									<input type="checkbox" id="brand1" value="">
+									<label for="brand1"><span></span>Direct Bank Transfer</label>
+								</li>
+								<li>
+									<input type="checkbox" id="brand2" value="">
+									<label for="brand2"><span></span>Cheque Payment</label>
+								</li>
+								<li>
+									<input type="checkbox" id="brand3" value="">
+									<label for="brand3"><span></span>Paypal</label>
+								</li>
+							</ul>
+							<!-- Thêm nút "Place Order" và "Clear Cart" -->
+							<button class="btn btn-primary add-cart item_add" id="placeOrderBtn">Place Order</button>
+							<button class="btn btn-danger add-cart item_add">Clear Cart</button>
+							<!-- Thêm phần hiển thị thông báo -->
+							<div id="orderMessage"></div>
+						</div>
+						<div class="clearfix"> </div>
+					</div>
+				</div>
+			</div>
+			
 		</div>
 	</div>
 	<div class="footer">
@@ -167,7 +221,7 @@
 			<div class="footer-info">
 				<div class="col-md-4 footer-grids wow fadeInUp animated" data-wow-delay=".5s">
 					<h4 class="footer-logo"><a href="index.html">Baby <b>Time</b></a></h4>
-					<p>2017 © Baby Time. All rights reserved | Design by HELP University</p>
+					
 				</div>
 				<div class="col-md-4 footer-grids wow fadeInUp animated" data-wow-delay=".7s">
 					<h3>Popular</h3>
@@ -191,5 +245,34 @@
 	</div>
 	<script src="js/main.js"></script>
     <script src="js/bootstrap.js"></script>
+    <!-- Script để xử lý sự kiện khi nhấn vào nút "Place Order" -->
+	<script>
+		$(document).ready(function(){
+			$("#placeOrderBtn").click(function(){
+				// Lấy thông tin từ các trường nhập vào
+				var name = $("input[placeholder='Name']").val();
+				var email = $("input[placeholder='Email']").val();
+				var address = $("input[placeholder='Address']").val();
+				var city = $("input[placeholder='City']").val();
+				var phone = $("input[placeholder='Phone']").val();
+				var zip = $("input[placeholder='Zip']").val();
+				
+				// Kiểm tra xem các trường đã được điền đầy đủ hay chưa
+				if(name == "" || email == "" || address == "" || city == "" || phone == "" || zip == ""){
+					alert("Please fill in all fields.");
+				}
+				else{
+					// Nếu đã điền đầy đủ thông tin, hiển thị thông báo và xóa các trường nhập
+					$("#orderMessage").html("<p>Order placed successfully!</p>");
+					$("input[placeholder='Name']").val("");
+					$("input[placeholder='Email']").val("");
+					$("input[placeholder='Address']").val("");
+					$("input[placeholder='City']").val("");
+					$("input[placeholder='Phone']").val("");
+					$("input[placeholder='Zip']").val("");
+				}
+			});
+		});
+	</script>
 </body>
 </html>
